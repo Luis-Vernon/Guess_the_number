@@ -8,7 +8,6 @@ class GuessGame:
         self.attempts = 0
 
     def guess(self, number):
-        """Возвращает -1 если меньше, 0 если угадал, 1 если больше."""
         self.attempts += 1
         if number < self.secret:
             return -1
@@ -17,6 +16,10 @@ class GuessGame:
         else:
             return 0
 
-    def reset(self):
+    def reset(self, min_num=None, max_num=None):
+        if min_num is not None:
+            self.min_num = min_num
+        if max_num is not None:
+            self.max_num = max_num
         self.secret = random.randint(self.min_num, self.max_num)
         self.attempts = 0
